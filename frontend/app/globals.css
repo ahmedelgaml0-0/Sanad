@@ -35,6 +35,18 @@
   --color-on-dark: #f4f1e8;
   --color-on-dark-muted: #cbd3be;
   --color-on-solid: #fffdf8; /* text on primary-solid / sage */
+
+  /* Signed-in app */
+  --color-notify: #e07a4f; /* unread dot: the one saturated colour, kept tiny */
+  --color-mood-very-low: #ecb3b6;
+  --color-mood-low: #f3c4a2;
+  --color-mood-okay: #f5d98f;
+  --color-mood-good: #c6d9a8;
+  --color-mood-great: #a8c58c;
+
+  /* Warm-brown shadows instead of grey ones, so cards sit on the cream page instead of looking dirty. */
+  --shadow-card: 0 1px 2px rgb(90 70 54 / 0.04), 0 12px 32px -18px rgb(90 70 54 / 0.2);
+  --shadow-float: 0 1px 2px rgb(90 70 54 / 0.06), 0 24px 48px -20px rgb(90 70 54 / 0.3);
 }
 
 /* Fonts come from next/font in layout.tsx as CSS variables, so @theme must reference them inline. */

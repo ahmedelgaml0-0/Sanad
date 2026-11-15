@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { getFeaturedCommunities } from "@/lib/api/landing";
 import { CommunityCard } from "./CommunityCard";
-import { LeafDecor } from "./LeafDecor";
+import { LeafDecor } from "@/components/ui/LeafDecor";
 
 export async function Communities() {
   const t = await getTranslations("landing.communities");

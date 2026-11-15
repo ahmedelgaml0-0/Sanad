@@ -8,7 +8,8 @@
     "joinShort": "Join",
     "join": "Join the community",
     "tryDemo": "Try the demo",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "skipToContent": "Skip to content"
   },
   "landing": {
     "nav": {
@@ -176,5 +177,79 @@
       "submitting": "Saving…",
       "switch": "Changed your mind? <link>Back to sign in</link>"
     }
+  },
+  "app": {
+    "metaTitle": "Home",
+    "nav": {
+      "label": "Main",
+      "home": "Home",
+      "search": "Search",
+      "circles": "Circles",
+      "stories": "Stories",
+      "messages": "Messages",
+      "notifications": "Notifications",
+      "saved": "Saved",
+      "profile": "Your profile",
+      "settings": "Settings",
+      "signOut": "Sign out",
+      "signingOut": "Signing out…",
+      "share": "Share",
+      "unread": "new activity",
+      "profileShort": "Profile"
+    },
+    "demoBanner": "You're exploring a demo, and it's deleted after 24 hours. <link>Create an account</link> to keep your space.",
+    "greeting": {
+      "hello": "Hello, {name}",
+      "morning": "Good morning, {name}",
+      "afternoon": "Good afternoon, {name}",
+      "evening": "Good evening, {name}",
+      "subtitle": "Hope today brings you a little more ease."
+    },
+    "checkIn": {
+      "title": "How are you feeling today?",
+      "privacy": "Only you can see this",
+      "moods": {
+        "veryLow": "Very low",
+        "low": "Low",
+        "okay": "Okay",
+        "good": "Good",
+        "great": "Great"
+      },
+      "noteLabel": "Private note",
+      "notePlaceholder": "A private note, only you can see this",
+      "save": "Save check-in",
+      "saving": "Saving…",
+      "pickMood": "Choose how you're feeling first.",
+      "saved": "Today you're feeling {mood}.",
+      "edit": "Edit"
+    },
+    "composer": {
+      "prompt": "Share a story with your circles…",
+      "action": "Share a story"
+    },
+    "feed": {
+      "title": "Latest from your circles",
+      "seeAll": "See all",
+      "meta": "<time>{when}</time> · <circle>{circleName}</circle>",
+      "relateCount": "I relate · {count}",
+      "supportCount": "Sending support · {count}",
+      "replies": "{count, plural, =0 {No replies yet} one {# reply} other {# replies}}",
+      "save": "Save story",
+      "empty": "Your feed fills up as you join circles."
+    },
+    "thought": "Progress isn't always loud. Sometimes it's just getting through the day.",
+    "notAlone": {
+      "title": "You're not alone",
+      "text": "A place for sharing, supporting, and understanding each other.",
+      "cta": "Open your circles"
+    },
+    "discover": {
+      "title": "Discover circles",
+      "seeAll": "See all",
+      "members": "{count, plural, one {{formatted} member} other {{formatted} members}}",
+      "join": "Join",
+      "joined": "Joined"
+    },
+    "disclaimer": "Peer support, not medical advice."
   }
 }

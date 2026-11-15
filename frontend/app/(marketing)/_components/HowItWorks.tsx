@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { CalendarCheck, PenLine, UsersRound, type LucideIcon } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { LeafDecor } from "./LeafDecor";
+import { LeafDecor } from "@/components/ui/LeafDecor";
 
 type StepKey = "checkIn" | "share" | "circle";
 
