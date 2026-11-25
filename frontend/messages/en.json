@@ -147,7 +147,8 @@
       "UNKNOWN_ERROR": "Something went wrong on our side. Please try again.",
       "GOOGLE_FAILED": "Google sign-in didn't go through. Please try again.",
       "GOOGLE_EMAIL_IN_USE": "This email is already linked to a different Google account. Sign in with that account, or with your email and password.",
-      "GOOGLE_SIGNUP_EXPIRED": "Your Google sign-up timed out. <link>Start again</link>"
+      "GOOGLE_SIGNUP_EXPIRED": "Your Google sign-up timed out. <link>Start again</link>",
+      "RESET_TOKEN_INVALID": "This reset link has expired or was already used."
     },
     "signUp": {
       "metaTitle": "Join Sanad",
@@ -167,7 +168,43 @@
       "forgot": "Forgot password?",
       "submit": "Sign in",
       "submitting": "Signing in…",
-      "switch": "New to Sanad? <link>Join the community</link>"
+      "switch": "New to Sanad? <link>Join the community</link>",
+      "passwordChanged": "Your password was changed. Sign in with your new one."
+    },
+    "forgotPassword": {
+      "metaTitle": "Reset your password",
+      "title": "Forgot your password?",
+      "subtitle": "It happens. Enter the email you joined with, and we'll send you a link to choose a new one.",
+      "submit": "Send reset link",
+      "submitting": "Sending…",
+      "switch": "Remembered it? <link>Back to sign in</link>",
+      "sent": {
+        "title": "Check your email",
+        "subtitle": "If there's a Sanad account for <email>{address}</email>, a link to reset your password is on its way. It works for 30 minutes.",
+        "spam": "Can't find it? It can take a minute, and sometimes it lands in spam.",
+        "resend": "Send it again",
+        "resending": "Sending…",
+        "resendIn": "Send again in {seconds}s",
+        "resent": "Sent again. Check your inbox.",
+        "differentEmail": "Use a different email",
+        "back": "Back to sign in"
+      }
+    },
+    "resetPassword": {
+      "metaTitle": "Choose a new password",
+      "title": "Choose a new password",
+      "subtitle": "Make it at least 12 characters. Afterwards you'll be signed out everywhere, and you can sign in with it right away.",
+      "checking": "Checking your link…",
+      "label": "New password",
+      "submit": "Save new password",
+      "submitting": "Saving…",
+      "switch": "Remembered it? <link>Back to sign in</link>",
+      "invalid": {
+        "title": "This link has expired",
+        "subtitle": "Reset links work once, for 30 minutes. Ask for a new one and it'll be on its way right away.",
+        "cta": "Send a new link",
+        "back": "Back to sign in"
+      }
     },
     "choosePenName": {
       "metaTitle": "Choose your pen name",

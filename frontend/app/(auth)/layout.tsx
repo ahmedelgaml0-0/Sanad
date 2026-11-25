@@ -49,8 +49,9 @@ export default async function AuthLayout({ children }: LayoutProps<"/">) {
           className="hidden h-auto w-[112%] max-w-none -translate-y-[4%] justify-self-center lg:block"
         />
 
-        {/* On tablets the form stays at a comfortable reading width instead of stretching across the screen. */}
-        <div className="mx-auto w-full max-w-lg lg:max-w-none">{children}</div>
+        {/* On tablets the form stays at a comfortable reading width instead of stretching across the screen.
+            A page whose panel opts into alignTop is lifted to the top of the row, level with the illustration. */}
+        <div className="mx-auto w-full max-w-lg lg:max-w-none lg:has-[[data-align-top]]:self-start">{children}</div>
       </main>
 
       {/* A watercolour meadow behind the bottom of the page, full width at its natural shape: it gives the page

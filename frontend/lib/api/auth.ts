@@ -1,4 +1,4 @@
-import type { AuthUser, GoogleSignUpInput, SignInInput, SignUpInput } from "@/types/auth";
+import type { AuthUser, ForgotPasswordInput, GoogleSignUpInput, ResetPasswordInput, SignInInput, SignUpInput } from "@/types/auth";
 import { apiRequest } from "./client";
 
 // The contract the auth module on the backend implements. The session lives in an httpOnly cookie
@@ -39,4 +39,21 @@ export function googleAuthUrl() {
 // Errors: GOOGLE_SIGNUP_EXPIRED (the 15-minute window passed), EMAIL_TAKEN.
 export function completeGoogleSignUp(input: GoogleSignUpInput) {
   return apiRequest<{ user: AuthUser }>("/auth/google/complete", { method: "POST", body: JSON.stringify(input) });
+}
+
+// POST /auth/password/forgot { email } → 204, whether or not the email has an account,
+// so the answer can't be used to find out who is registered. Errors: RATE_LIMITED.
+export function requestPasswordReset(input: ForgotPasswordInput) {
+  return apiRequest<void>("/auth/password/forgot", { method: "POST", body: JSON.stringify(input) });
+}
+
+// POST /auth/password/reset/verify { token } → { valid }. Lets the reset page say "expired" before the form is filled in.
+export function verifyResetToken(token: string) {
+  return apiRequest<{ valid: boolean }>("/auth/password/reset/verify", { method: "POST", body: JSON.stringify({ token }) });
+}
+
+// POST /auth/password/reset { token, password } → 204. Signs out every session (and clears this browser's cookie).
+// Errors: RESET_TOKEN_INVALID (wrong, used or expired link), VALIDATION_ERROR, RATE_LIMITED.
+export function resetPassword(input: ResetPasswordInput) {
+  return apiRequest<void>("/auth/password/reset", { method: "POST", body: JSON.stringify(input) });
 }

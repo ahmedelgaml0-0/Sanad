@@ -17,6 +17,15 @@ export type GoogleSignUpInput = {
   penName: string;
 };
 
+export type ForgotPasswordInput = {
+  email: string;
+};
+
+export type ResetPasswordInput = {
+  token: string;
+  password: string;
+};
+
 export type SignInInput = {
   email: string;
   password: string;

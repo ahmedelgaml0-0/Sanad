@@ -4,8 +4,16 @@ import { AppError } from "../../utils/AppError";
 import { parseInput } from "../../utils/validate";
 import * as authService from "./auth.service";
 import * as googleService from "./google.service";
+import * as passwordReset from "./passwordReset.service";
 import { GOOGLE_SIGNUP_COOKIE, GOOGLE_STATE_COOKIE, SESSION_COOKIE } from "./auth.tokens";
-import { googleSignUpSchema, signInSchema, signUpSchema } from "./auth.validation";
+import {
+  forgotPasswordSchema,
+  googleSignUpSchema,
+  resetPasswordSchema,
+  signInSchema,
+  signUpSchema,
+  verifyResetTokenSchema,
+} from "./auth.validation";
 
 // httpOnly keeps the token away from page scripts (XSS); lax blocks it on cross-site form posts (CSRF).
 const cookieOptions: CookieOptions = {
@@ -104,4 +112,25 @@ export async function googleComplete(req: Request, res: Response) {
   const session = await googleService.completeGoogleSignUp(req.cookies?.[GOOGLE_SIGNUP_COOKIE], input);
   res.clearCookie(GOOGLE_SIGNUP_COOKIE, googleFlowCookie);
   sendSession(res, 201, session);
+}
+
+// Answer first, work afterwards: the response is identical and equally fast whether or not the account exists,
+// so neither the reply nor its timing reveals which emails are registered.
+export async function forgotPassword(req: Request, res: Response) {
+  const { email } = parseInput(forgotPasswordSchema, req.body);
+  res.set("Cache-Control", "no-store").status(204).end();
+  passwordReset.requestPasswordReset(email).catch((err) => console.error("Password reset request failed:", err));
+}
+
+export async function verifyResetToken(req: Request, res: Response) {
+  const { token } = parseInput(verifyResetTokenSchema, req.body);
+  res.set("Cache-Control", "no-store").json({ valid: await passwordReset.isPasswordResetTokenValid(token) });
+}
+
+export async function resetPassword(req: Request, res: Response) {
+  const { token, password } = parseInput(resetPasswordSchema, req.body);
+  await passwordReset.resetPassword(token, password);
+  // Every session was just ended on the server, so this browser's cookie goes too; they sign in with the new password.
+  res.clearCookie(SESSION_COOKIE, cookieOptions);
+  res.set("Cache-Control", "no-store").status(204).end();
 }

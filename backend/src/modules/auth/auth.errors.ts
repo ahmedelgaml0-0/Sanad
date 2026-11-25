@@ -15,4 +15,8 @@ export const googleEmailInUse = () =>
 export const googleSignUpExpired = () =>
   new AppError(401, "GOOGLE_SIGNUP_EXPIRED", "Google sign-up expired, start again");
 
+// The reset link is wrong, already used, or older than 30 minutes. One code for all three: the page shows the same thing.
+export const invalidResetToken = () =>
+  new AppError(400, "RESET_TOKEN_INVALID", "This reset link is invalid or has expired");
+
 export const unauthenticated = () => new AppError(401, "UNAUTHENTICATED", "Not signed in");

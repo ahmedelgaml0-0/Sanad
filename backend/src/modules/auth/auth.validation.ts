@@ -5,10 +5,15 @@ const email = z.string().trim().toLowerCase().max(254).pipe(z.email());
 
 const penName = z.string().trim().min(2).max(40);
 
+const newPassword = z.string().min(12).max(128);
+
+// Reset links carry a 43-character token; the bounds only reject obvious junk before any database work.
+const resetToken = z.string().min(20).max(200);
+
 export const signUpSchema = z.object({
   penName,
   email,
-  password: z.string().min(12).max(128),
+  password: newPassword,
 });
 
 // No minimum length on sign-in: a rule change later must not lock out accounts made under the old rule.
@@ -18,6 +23,13 @@ export const signInSchema = z.object({
 });
 
 export const googleSignUpSchema = z.object({ penName });
+
+export const forgotPasswordSchema = z.object({ email });
+
+export const verifyResetTokenSchema = z.object({ token: resetToken });
+
+// The new password follows the same rules as sign-up.
+export const resetPasswordSchema = z.object({ token: resetToken, password: newPassword });
 
 export type SignUpInput = z.output<typeof signUpSchema>;
 export type SignInInput = z.output<typeof signInSchema>;

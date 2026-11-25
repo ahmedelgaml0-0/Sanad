@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { AuthPanel } from "./AuthPanel";
 import { GoogleButton } from "./GoogleButton";
 import { GoogleErrorAlert } from "./GoogleErrorAlert";
+import { PasswordChangedNotice } from "./PasswordChangedNotice";
 import { DemoButton } from "./DemoButton";
 
 type AuthCardProps = {
@@ -19,8 +20,9 @@ export async function AuthCard({ title, subtitle, divider, form, footer }: AuthC
 
   return (
     <AuthPanel title={title} subtitle={subtitle}>
-      {/* Reads ?error= from the URL, which only exists in the browser; Suspense keeps the rest of the page static. */}
+      {/* Read ?error= and ?reset= from the URL, which only exists in the browser; Suspense keeps the rest of the page static. */}
       <Suspense fallback={null}>
+        <PasswordChangedNotice />
         <GoogleErrorAlert />
       </Suspense>
 
