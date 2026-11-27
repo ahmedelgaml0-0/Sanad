@@ -24,3 +24,5 @@ authRoutes.post("/google/complete", credentialsLimit, controller.googleComplete)
 authRoutes.post("/password/forgot", forgotLimit, controller.forgotPassword);
 authRoutes.post("/password/reset/verify", resetLimit, controller.verifyResetToken);
 authRoutes.post("/password/reset", resetLimit, controller.resetPassword);
+authRoutes.post("/email/verify", resetLimit, controller.verifyEmail);
+authRoutes.post("/email/resend", forgotLimit, requireAuth, controller.resendVerification);

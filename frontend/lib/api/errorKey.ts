@@ -9,6 +9,7 @@ const known = [
   "GOOGLE_EMAIL_IN_USE",
   "GOOGLE_SIGNUP_EXPIRED",
   "RESET_TOKEN_INVALID",
+  "VERIFY_TOKEN_INVALID",
 ] as const;
 export type ApiErrorKey = (typeof known)[number] | "UNKNOWN_ERROR";
 

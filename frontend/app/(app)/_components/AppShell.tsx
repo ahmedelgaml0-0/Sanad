@@ -4,6 +4,7 @@ import { LeafDecor } from "@/components/ui/LeafDecor";
 import { requireUser } from "@/lib/api/auth.server";
 import { getNavBadges } from "@/lib/api/home";
 import { DemoBanner } from "./DemoBanner";
+import { VerifyEmailBanner } from "./VerifyEmailBanner";
 import { MobileHeader } from "./MobileHeader";
 import { MobileTabBar } from "./MobileTabBar";
 import { Sidebar } from "./Sidebar";
@@ -27,6 +28,7 @@ export async function AppShell({ children }: { children: ReactNode }) {
           translate, not padding: the text doesn't re-wrap, it only moves. */}
       <div className="flex flex-1 flex-col transition-transform duration-200 ease-out peer-hover:translate-x-[calc(11.5rem_-_var(--app-gap))] peer-hover:delay-150 peer-has-focus-visible:translate-x-[calc(11.5rem_-_var(--app-gap))] motion-reduce:transition-none md:ps-20 rtl:peer-hover:-translate-x-[calc(11.5rem_-_var(--app-gap))] rtl:peer-has-focus-visible:-translate-x-[calc(11.5rem_-_var(--app-gap))]">
         {user.isDemo && <DemoBanner />}
+        {user.email && !user.emailVerified && <VerifyEmailBanner email={user.email} />}
         <main id="main" className="flex-1">
           {children}
         </main>

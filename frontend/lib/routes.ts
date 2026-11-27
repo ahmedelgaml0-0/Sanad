@@ -6,6 +6,8 @@ export const routes = {
   forgotPassword: "/forgot-password",
   // The link in the reset email points here; the backend builds it, so the two paths must match.
   resetPassword: "/reset-password",
+  // The link in the confirmation email points here; the backend builds it, so the two paths must match.
+  verifyEmail: "/verify-email",
   // First Google sign-up only; the backend redirects here and must use the same path.
   choosePenName: "/choose-pen-name",
   // Where people land after signing in (the signed-in app home).

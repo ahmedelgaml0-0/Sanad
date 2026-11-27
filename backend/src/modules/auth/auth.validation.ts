@@ -31,6 +31,8 @@ export const verifyResetTokenSchema = z.object({ token: resetToken });
 // The new password follows the same rules as sign-up.
 export const resetPasswordSchema = z.object({ token: resetToken, password: newPassword });
 
+export const verifyEmailSchema = z.object({ token: resetToken });
+
 export type SignUpInput = z.output<typeof signUpSchema>;
 export type SignInInput = z.output<typeof signInSchema>;
 export type GoogleSignUpInput = z.output<typeof googleSignUpSchema>;

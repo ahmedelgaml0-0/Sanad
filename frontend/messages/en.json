@@ -148,7 +148,8 @@
       "GOOGLE_FAILED": "Google sign-in didn't go through. Please try again.",
       "GOOGLE_EMAIL_IN_USE": "This email is already linked to a different Google account. Sign in with that account, or with your email and password.",
       "GOOGLE_SIGNUP_EXPIRED": "Your Google sign-up timed out. <link>Start again</link>",
-      "RESET_TOKEN_INVALID": "This reset link has expired or was already used."
+      "RESET_TOKEN_INVALID": "This reset link has expired or was already used.",
+      "VERIFY_TOKEN_INVALID": "This confirmation link has expired or was already used."
     },
     "signUp": {
       "metaTitle": "Join Sanad",
@@ -204,6 +205,23 @@
         "subtitle": "Reset links work once, for 30 minutes. Ask for a new one and it'll be on its way right away.",
         "cta": "Send a new link",
         "back": "Back to sign in"
+      }
+    },
+    "verifyEmail": {
+      "metaTitle": "Confirm your email",
+      "title": "Confirm your email",
+      "subtitle": "One press and your email is confirmed. That's all it takes.",
+      "submit": "Confirm my email",
+      "submitting": "Confirming…",
+      "done": {
+        "title": "Email confirmed",
+        "subtitle": "Thank you. Your email is confirmed, and you can now take part in every part of Sanad.",
+        "cta": "Go to Sanad"
+      },
+      "invalid": {
+        "title": "This link has expired",
+        "subtitle": "Confirmation links work once, for 24 hours. Open Sanad and choose “Send it again” in the banner at the top for a fresh one.",
+        "cta": "Go to Sanad"
       }
     },
     "choosePenName": {
@@ -287,6 +305,13 @@
       "join": "Join",
       "joined": "Joined"
     },
-    "disclaimer": "Peer support, not medical advice."
+    "disclaimer": "Peer support, not medical advice.",
+    "verifyBanner": {
+      "text": "Confirm your email: we sent a link to <email>{address}</email>.",
+      "resend": "Send it again",
+      "sending": "Sending…",
+      "resendIn": "Send again in {seconds}s",
+      "sent": "Sent. Check your inbox."
+    }
   }
 }

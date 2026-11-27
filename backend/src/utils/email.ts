@@ -34,7 +34,8 @@ function printEmail(message: EmailMessage, reason: string): void {
 async function send(message: EmailMessage): Promise<void> {
   if (!env.RESEND_API_KEY) {
     // env.ts refuses to start production without a key, so this only happens in development and tests.
-    printEmail(message, "RESEND_API_KEY is not set");
+    // Tests that care about emails replace mailer.send; the rest shouldn't fill the test output.
+    if (env.NODE_ENV !== "test") printEmail(message, "RESEND_API_KEY is not set");
     return;
   }
 

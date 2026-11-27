@@ -28,6 +28,7 @@ describe("POST /auth/sign-up", () => {
       email: "maya@example.com",
       avatarUrl: null,
       isDemo: false,
+      emailVerified: false,
     });
     assert.match(res.headers["set-cookie"][0], /HttpOnly/);
 

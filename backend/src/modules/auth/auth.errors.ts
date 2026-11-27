@@ -19,4 +19,7 @@ export const googleSignUpExpired = () =>
 export const invalidResetToken = () =>
   new AppError(400, "RESET_TOKEN_INVALID", "This reset link is invalid or has expired");
 
+export const invalidVerificationToken = () =>
+  new AppError(400, "VERIFY_TOKEN_INVALID", "This confirmation link is invalid or has expired");
+
 export const unauthenticated = () => new AppError(401, "UNAUTHENTICATED", "Not signed in");

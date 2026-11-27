@@ -4,6 +4,7 @@ import { AppError } from "../../utils/AppError";
 import { parseInput } from "../../utils/validate";
 import * as authService from "./auth.service";
 import * as googleService from "./google.service";
+import * as emailVerification from "./emailVerification.service";
 import * as passwordReset from "./passwordReset.service";
 import { GOOGLE_SIGNUP_COOKIE, GOOGLE_STATE_COOKIE, SESSION_COOKIE } from "./auth.tokens";
 import {
@@ -12,6 +13,7 @@ import {
   resetPasswordSchema,
   signInSchema,
   signUpSchema,
+  verifyEmailSchema,
   verifyResetTokenSchema,
 } from "./auth.validation";
 
@@ -50,7 +52,10 @@ function sendSession(res: Response, status: number, result: authService.AuthResu
 
 export async function signUp(req: Request, res: Response) {
   const input = parseInput(signUpSchema, req.body);
-  sendSession(res, 201, await authService.signUp(input));
+  const result = await authService.signUp(input);
+  sendSession(res, 201, result);
+  // After the response: a slow or failing email provider must never fail or delay the sign-up itself.
+  emailVerification.requestVerificationEmail(result.user.id).catch((err) => console.error("Verification email failed:", err));
 }
 
 export async function signIn(req: Request, res: Response) {
@@ -133,4 +138,15 @@ export async function resetPassword(req: Request, res: Response) {
   // Every session was just ended on the server, so this browser's cookie goes too; they sign in with the new password.
   res.clearCookie(SESSION_COOKIE, cookieOptions);
   res.set("Cache-Control", "no-store").status(204).end();
+}
+
+export async function verifyEmail(req: Request, res: Response) {
+  const { token } = parseInput(verifyEmailSchema, req.body);
+  res.set("Cache-Control", "no-store").json({ user: await emailVerification.verifyEmail(token) });
+}
+
+// Signed-in only (the banner's "send again"), so there's no email in the request and nothing to enumerate.
+export async function resendVerification(req: Request, res: Response) {
+  await emailVerification.requestVerificationEmail(req.auth!.userId);
+  res.status(204).end();
 }

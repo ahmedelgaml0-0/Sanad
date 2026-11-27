@@ -5,6 +5,7 @@ export type AuthUser = {
   email: string | null; // null for demo accounts
   avatarUrl: string | null;
   isDemo: boolean;
+  emailVerified: boolean;
 };
 
 export type SignUpInput = {

@@ -57,3 +57,14 @@ export function verifyResetToken(token: string) {
 export function resetPassword(input: ResetPasswordInput) {
   return apiRequest<void>("/auth/password/reset", { method: "POST", body: JSON.stringify(input) });
 }
+
+// POST /auth/email/verify { token } → { user } with emailVerified: true. Doesn't sign in or set a cookie.
+// Errors: VERIFY_TOKEN_INVALID (wrong, used or older than 24 hours).
+export function verifyEmail(token: string) {
+  return apiRequest<{ user: AuthUser }>("/auth/email/verify", { method: "POST", body: JSON.stringify({ token }) });
+}
+
+// POST /auth/email/resend → 204. Signed-in only. Sends nothing if already verified or a link went out in the last minute.
+export function resendVerificationEmail() {
+  return apiRequest<void>("/auth/email/resend", { method: "POST" });
+}

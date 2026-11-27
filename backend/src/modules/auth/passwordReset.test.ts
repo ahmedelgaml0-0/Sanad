@@ -16,6 +16,8 @@ const maya = { penName: "Maya", email: "maya@example.com", password: "a-long-cal
 const newPassword = "a-brand-new-calm-password";
 
 let sent: EmailMessage[] = [];
+// Sign-up also sends a verification email now; these tests only look at reset emails.
+const resets = () => sent.filter((m) => m.subject === "Reset your Sanad password");
 
 // The forgot endpoint answers before it works, so tests wait for the email (or for nothing to happen).
 async function waitFor(check: () => boolean, ms = 2000) {
@@ -25,10 +27,10 @@ async function waitFor(check: () => boolean, ms = 2000) {
 const settle = () => new Promise((r) => setTimeout(r, 150));
 
 async function requestLink(email = maya.email): Promise<string> {
-  const before = sent.length;
+  const before = resets().length;
   await api.post("/api/v1/auth/password/forgot").send({ email }).expect(204);
-  await waitFor(() => sent.length > before);
-  const link = sent.at(-1)?.text.match(/https?:\/\/\S+/)?.[0];
+  await waitFor(() => resets().length > before);
+  const link = resets().at(-1)?.text.match(/https?:\/\/\S+/)?.[0];
   assert.ok(link, "expected a reset link in the email");
   return new URL(link).searchParams.get("token") ?? "";
 }
@@ -54,8 +56,8 @@ describe("POST /auth/password/forgot", () => {
     await api.post("/api/v1/auth/sign-up").send(maya);
     const token = await requestLink();
 
-    assert.equal(sent[0].to, maya.email);
-    assert.ok(sent[0].text.includes(`${env.CLIENT_ORIGIN}/reset-password?token=`));
+    assert.equal(resets()[0].to, maya.email);
+    assert.ok(resets()[0].text.includes(`${env.CLIENT_ORIGIN}/reset-password?token=`));
     const stored = await PasswordReset.find().lean();
     assert.equal(stored.length, 1);
     assert.equal(stored[0].tokenHash, hashOneTimeToken(token));
@@ -65,14 +67,14 @@ describe("POST /auth/password/forgot", () => {
   test("answers an unknown email exactly the same, and sends nothing", async () => {
     await api.post("/api/v1/auth/sign-up").send(maya);
     const known = await api.post("/api/v1/auth/password/forgot").send({ email: maya.email });
-    await waitFor(() => sent.length > 0);
+    await waitFor(() => resets().length > 0);
     sent = [];
     const unknown = await api.post("/api/v1/auth/password/forgot").send({ email: "nobody@example.com" });
     await settle();
 
     assert.equal(unknown.status, known.status);
     assert.deepEqual(unknown.body, known.body);
-    assert.equal(sent.length, 0);
+    assert.equal(resets().length, 0);
   });
 
   test("sends at most one email a minute, and a newer link replaces the older one", async () => {
@@ -81,7 +83,7 @@ describe("POST /auth/password/forgot", () => {
 
     await api.post("/api/v1/auth/password/forgot").send({ email: maya.email }).expect(204);
     await settle();
-    assert.equal(sent.length, 1, "a second request within a minute sends nothing");
+    assert.equal(resets().length, 1, "a second request within a minute sends nothing");
 
     // A minute later, a new request gets a new link and the old one stops working.
     // Raw collection: Mongoose treats createdAt as unchangeable and would silently skip this.

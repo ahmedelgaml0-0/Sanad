@@ -19,17 +19,20 @@ export type AuthUser = {
   email: string | null;
   avatarUrl: string | null;
   isDemo: boolean;
+  // Lets the frontend show the "confirm your email" banner.
+  emailVerified: boolean;
 };
 
 export type AuthResult = { user: AuthUser; token: string; expiresAt: Date };
 
-function toAuthUser(user: UserRecord): AuthUser {
+export function toAuthUser(user: UserRecord): AuthUser {
   return {
     id: user._id.toString(),
     penName: user.penName,
     email: user.email ?? null,
     avatarUrl: user.avatarUrl ?? null,
     isDemo: user.isDemo,
+    emailVerified: Boolean(user.emailVerifiedAt),
   };
 }
 
