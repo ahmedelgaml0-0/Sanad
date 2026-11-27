@@ -8,7 +8,8 @@
     "joinShort": "Join",
     "join": "Join the community",
     "tryDemo": "Try the demo",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "skipToContent": "Skip to content"
   },
   "landing": {
     "nav": {
@@ -101,6 +102,216 @@
       "privacy": "Privacy",
       "contact": "Contact",
       "copyright": "© {year} Sanad. A portfolio project by Ahmed. Not a medical service."
+    }
+  },
+  "auth": {
+    "backHome": "Back to home",
+    "footer": "Peer support, not medical advice.",
+    "imageAlt": "Two friends sitting close on a hillside, one resting her head on the other's shoulder",
+    "or": "or",
+    "google": "Continue with Google",
+    "demo": {
+      "label": "Try the demo",
+      "hint": "No sign-up needed",
+      "loading": "Opening the demo…"
+    },
+    "fields": {
+      "penName": {
+        "label": "Pen name",
+        "placeholder": "What should we call you?",
+        "hint": "Your real name can stay private."
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "you@example.com"
+      },
+      "password": {
+        "label": "Password",
+        "hint": "At least 12 characters",
+        "show": "Show password",
+        "hide": "Hide password"
+      }
+    },
+    "errors": {
+      "penNameRequired": "Choose a pen name.",
+      "penNameLength": "Pen names are 2 to 40 characters.",
+      "emailRequired": "Enter your email.",
+      "emailInvalid": "Enter a valid email, like you@example.com.",
+      "passwordRequired": "Enter your password.",
+      "passwordShort": "Use at least 12 characters.",
+      "passwordLong": "Use 128 characters or fewer.",
+      "EMAIL_TAKEN": "An account with this email already exists. <link>Sign in instead?</link>",
+      "INVALID_CREDENTIALS": "That email and password don't match. Check them and try again.",
+      "RATE_LIMITED": "Too many attempts. Please wait a minute and try again.",
+      "NETWORK_ERROR": "We couldn't reach Sanad. Check your connection and try again.",
+      "UNKNOWN_ERROR": "Something went wrong on our side. Please try again.",
+      "GOOGLE_FAILED": "Google sign-in didn't go through. Please try again.",
+      "GOOGLE_EMAIL_IN_USE": "This email is already linked to a different Google account. Sign in with that account, or with your email and password.",
+      "GOOGLE_SIGNUP_EXPIRED": "Your Google sign-up timed out. <link>Start again</link>",
+      "RESET_TOKEN_INVALID": "This reset link has expired or was already used.",
+      "VERIFY_TOKEN_INVALID": "This confirmation link has expired or was already used."
+    },
+    "signUp": {
+      "metaTitle": "Join Sanad",
+      "title": "Join the community",
+      "subtitle": "A place to share, listen, and feel understood.",
+      "divider": "or sign up with email",
+      "terms": "By joining, you agree to our <terms>Terms</terms> and <guidelines>Community guidelines</guidelines>.",
+      "submit": "Join the community",
+      "submitting": "Joining…",
+      "switch": "Already part of Sanad? <link>Sign in</link>"
+    },
+    "signIn": {
+      "metaTitle": "Sign in to Sanad",
+      "title": "Welcome back",
+      "subtitle": "It's good to see you again.",
+      "divider": "or sign in with email",
+      "forgot": "Forgot password?",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "switch": "New to Sanad? <link>Join the community</link>",
+      "passwordChanged": "Your password was changed. Sign in with your new one."
+    },
+    "forgotPassword": {
+      "metaTitle": "Reset your password",
+      "title": "Forgot your password?",
+      "subtitle": "It happens. Enter the email you joined with, and we'll send you a link to choose a new one.",
+      "submit": "Send reset link",
+      "submitting": "Sending…",
+      "switch": "Remembered it? <link>Back to sign in</link>",
+      "sent": {
+        "title": "Check your email",
+        "subtitle": "If there's a Sanad account for <email>{address}</email>, a link to reset your password is on its way. It works for 30 minutes.",
+        "spam": "Can't find it? It can take a minute, and sometimes it lands in spam.",
+        "resend": "Send it again",
+        "resending": "Sending…",
+        "resendIn": "Send again in {seconds}s",
+        "resent": "Sent again. Check your inbox.",
+        "differentEmail": "Use a different email",
+        "back": "Back to sign in"
+      }
+    },
+    "resetPassword": {
+      "metaTitle": "Choose a new password",
+      "title": "Choose a new password",
+      "subtitle": "Make it at least 12 characters. Afterwards you'll be signed out everywhere, and you can sign in with it right away.",
+      "checking": "Checking your link…",
+      "label": "New password",
+      "submit": "Save new password",
+      "submitting": "Saving…",
+      "switch": "Remembered it? <link>Back to sign in</link>",
+      "invalid": {
+        "title": "This link has expired",
+        "subtitle": "Reset links work once, for 30 minutes. Ask for a new one and it'll be on its way right away.",
+        "cta": "Send a new link",
+        "back": "Back to sign in"
+      }
+    },
+    "verifyEmail": {
+      "metaTitle": "Confirm your email",
+      "title": "Confirm your email",
+      "subtitle": "One press and your email is confirmed. That's all it takes.",
+      "submit": "Confirm my email",
+      "submitting": "Confirming…",
+      "done": {
+        "title": "Email confirmed",
+        "subtitle": "Thank you. Your email is confirmed, and you can now take part in every part of Sanad.",
+        "cta": "Go to Sanad"
+      },
+      "invalid": {
+        "title": "This link has expired",
+        "subtitle": "Confirmation links work once, for 24 hours. Open Sanad and choose “Send it again” in the banner at the top for a fresh one.",
+        "cta": "Go to Sanad"
+      }
+    },
+    "choosePenName": {
+      "metaTitle": "Choose your pen name",
+      "title": "One last step",
+      "subtitle": "Choose the name others in Sanad will know you by.",
+      "submit": "Continue",
+      "submitting": "Saving…",
+      "switch": "Changed your mind? <link>Back to sign in</link>"
+    }
+  },
+  "app": {
+    "metaTitle": "Home",
+    "nav": {
+      "label": "Main",
+      "home": "Home",
+      "search": "Search",
+      "circles": "Circles",
+      "stories": "Stories",
+      "messages": "Messages",
+      "notifications": "Notifications",
+      "saved": "Saved",
+      "profile": "Your profile",
+      "settings": "Settings",
+      "signOut": "Sign out",
+      "signingOut": "Signing out…",
+      "share": "Share",
+      "unread": "new activity",
+      "profileShort": "Profile"
+    },
+    "demoBanner": "You're exploring a demo, and it's deleted after 24 hours. <link>Create an account</link> to keep your space.",
+    "greeting": {
+      "hello": "Hello, {name}",
+      "morning": "Good morning, {name}",
+      "afternoon": "Good afternoon, {name}",
+      "evening": "Good evening, {name}",
+      "subtitle": "Hope today brings you a little more ease."
+    },
+    "checkIn": {
+      "title": "How are you feeling today?",
+      "privacy": "Only you can see this",
+      "moods": {
+        "veryLow": "Very low",
+        "low": "Low",
+        "okay": "Okay",
+        "good": "Good",
+        "great": "Great"
+      },
+      "noteLabel": "Private note",
+      "notePlaceholder": "A private note, only you can see this",
+      "save": "Save check-in",
+      "saving": "Saving…",
+      "pickMood": "Choose how you're feeling first.",
+      "saved": "Today you're feeling {mood}.",
+      "edit": "Edit"
+    },
+    "composer": {
+      "prompt": "Share a story with your circles…",
+      "action": "Share a story"
+    },
+    "feed": {
+      "title": "Latest from your circles",
+      "seeAll": "See all",
+      "meta": "<time>{when}</time> · <circle>{circleName}</circle>",
+      "relateCount": "I relate · {count}",
+      "supportCount": "Sending support · {count}",
+      "replies": "{count, plural, =0 {No replies yet} one {# reply} other {# replies}}",
+      "save": "Save story",
+      "empty": "Your feed fills up as you join circles."
+    },
+    "thought": "Progress isn't always loud. Sometimes it's just getting through the day.",
+    "notAlone": {
+      "title": "You're not alone",
+      "text": "A place for sharing, supporting, and understanding each other.",
+      "cta": "Open your circles"
+    },
+    "discover": {
+      "title": "Discover circles",
+      "seeAll": "See all",
+      "members": "{count, plural, one {{formatted} member} other {{formatted} members}}",
+      "join": "Join",
+      "joined": "Joined"
+    },
+    "disclaimer": "Peer support, not medical advice.",
+    "verifyBanner": {
+      "text": "Confirm your email: we sent a link to <email>{address}</email>.",
+      "resend": "Send it again",
+      "sending": "Sending…",
+      "resendIn": "Send again in {seconds}s",
+      "sent": "Sent. Check your inbox."
     }
   }
 }

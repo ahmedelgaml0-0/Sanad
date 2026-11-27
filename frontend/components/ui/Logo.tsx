@@ -23,14 +23,16 @@ export function LogoMark({ variant = "default", className = "" }: { variant?: Lo
 type LogoProps = {
   variant?: LogoVariant;
   className?: string;
+  // Inside the app the logo leads to the app home, not the landing page.
+  href?: string;
 };
 
-export async function Logo({ variant = "default", className = "h-8 w-auto" }: LogoProps) {
+export async function Logo({ variant = "default", className = "h-8 w-auto", href = routes.home }: LogoProps) {
   const t = await getTranslations("common");
   const c = colors[variant];
 
   return (
-    <Link href={routes.home} aria-label={t("brand")} className="inline-flex min-h-11 items-center">
+    <Link href={href} aria-label={t("brand")} className="inline-flex min-h-11 items-center">
       {/* The wordmark is Lora Bold converted to outlines, so it never depends on font loading. */}
       <svg viewBox="0 0 173.33 40" aria-hidden="true" className={className}>
         <path className={c.leafDark} d="M29 1C30 12 27 23 21 32Q20 33 19 32C8 27 10 13 29 1Z" />
